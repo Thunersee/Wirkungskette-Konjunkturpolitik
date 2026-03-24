@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wirkungsketten der Konjunkturpolitik – Iran-Krieg-Szenario</title>
+<style>
+  :root {
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --bg-primary: #ffffff; --bg-secondary: #f7f7f5; --bg-tertiary: #f0efeb;
+    --text-primary: #1a1a1a; --text-secondary: #6b6b6b; --text-tertiary: #999999;
+    --border-light: rgba(0,0,0,0.12); --border-mid: rgba(0,0,0,0.22);
+    --radius-md: 8px; --radius-lg: 12px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-primary: #1e1e1e; --bg-secondary: #2a2a2a; --bg-tertiary: #333333;
+      --text-primary: #e0e0e0; --text-secondary: #a0a0a0; --text-tertiary: #707070;
+      --border-light: rgba(255,255,255,0.12); --border-mid: rgba(255,255,255,0.22);
+    }
+    .f-bg { background: #1a2e42 !important; } .g-bg { background: #1a3029 !important; } .a-bg { background: #26213a !important; }
+    .f-label { color: #85B7EB !important; } .g-label { color: #5DCAA5 !important; } .a-label { color: #AFA9EC !important; }
+    .tab.active-f { background: #1a2e42 !important; border-color: #378ADD !important; color: #85B7EB !important; }
+    .tab.active-g { background: #1a3029 !important; border-color: #1D9E75 !important; color: #5DCAA5 !important; }
+    .tab.active-a { background: #26213a !important; border-color: #7F77DD !important; color: #AFA9EC !important; }
+    .deep-content { background: #2a2a2a !important; border-color: rgba(255,255,255,0.15) !important; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); color: var(--text-primary); background: var(--bg-tertiary); padding: 16px; line-height: 1.5; }
+  .container { max-width: 720px; margin: 0 auto; background: var(--bg-primary); border-radius: var(--radius-lg); padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+  .page-title { text-align: center; margin-bottom: 4px; }
+  .page-title h1 { font-size: 20px; font-weight: 600; }
+  .page-subtitle { text-align: center; font-size: 13px; color: var(--text-secondary); margin-bottom: 6px; }
+  .page-context { text-align: center; font-size: 12px; color: var(--text-tertiary); margin-bottom: 20px; }
+  .tabs { display: flex; gap: 6px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
+  .tab { padding: 7px 14px; border-radius: var(--radius-md); border: 1px solid var(--border-light); background: var(--bg-primary); font-size: 13px; cursor: pointer; transition: all 0.2s; font-family: var(--font-sans); color: var(--text-primary); }
+  .tab:hover { border-color: var(--border-mid); background: var(--bg-secondary); }
+  .tab.active-f { background: #E6F1FB; border-color: #85B7EB; color: #0C447C; }
+  .tab.active-g { background: #E1F5EE; border-color: #5DCAA5; color: #085041; }
+  .tab.active-a { background: #EEEDFE; border-color: #AFA9EC; color: #3C3489; }
+  .chain-area { min-height: 300px; }
+  .chain { display: none; } .chain.visible { display: block; animation: fadeIn 0.35s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; } }
+  .step-row { display: flex; align-items: stretch; margin-bottom: 2px; }
+  .step-box { flex: 1; padding: 10px 14px; border-radius: var(--radius-md); border: 1px solid var(--border-light); min-height: 52px; display: flex; flex-direction: column; justify-content: center; }
+  .step-box .label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 3px; }
+  .step-box .text { font-size: 13px; line-height: 1.55; }
+  .arrow-col { display: flex; align-items: center; justify-content: center; width: 28px; flex-shrink: 0; font-size: 16px; color: var(--text-tertiary); }
+  .f-bg { background: #E6F1FB; } .f-label { color: #185FA5; }
+  .g-bg { background: #E1F5EE; } .g-label { color: #0F6E56; }
+  .a-bg { background: #EEEDFE; } .a-label { color: #534AB7; }
+  .conflict-box { margin-top: 14px; padding: 14px 16px; border-radius: var(--radius-lg); border: 1px solid var(--border-light); background: var(--bg-secondary); }
+  .conflict-box .ch { font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+  .conflict-item { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 8px; display: flex; gap: 10px; align-items: flex-start; }
+  .conflict-icon { flex-shrink: 0; width: 18px; text-align: center; font-size: 13px; margin-top: 1px; }
+  .conflict-text { flex: 1; }
+  .cross-box { margin-top: 12px; padding: 12px 16px; border-radius: var(--radius-md); border: 1px dashed var(--border-mid); }
+  .cross-box .ch { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+  .cross-box .text { font-size: 12px; color: var(--text-secondary); line-height: 1.65; }
+  .deep-btn { display: block; margin: 14px auto 0; padding: 8px 18px; border-radius: var(--radius-md); border: 1px solid var(--border-mid); background: var(--bg-primary); font-size: 13px; font-family: var(--font-sans); color: var(--text-primary); cursor: pointer; transition: all 0.2s; }
+  .deep-btn:hover { background: var(--bg-secondary); }
+  .deep-btn .arrow { display: inline-block; transition: transform 0.25s; margin-left: 6px; font-size: 11px; }
+  .deep-btn.open .arrow { transform: rotate(90deg); }
+  .deep-content { margin-top: 10px; padding: 16px 18px; border-radius: var(--radius-lg); border: 1px solid var(--border-light); background: var(--bg-secondary); font-size: 13px; line-height: 1.7; color: var(--text-secondary); display: none; animation: fadeIn 0.3s ease; }
+  .deep-content.visible { display: block; }
+  .deep-content strong { color: var(--text-primary); font-weight: 600; }
+  .deep-content p { margin-bottom: 10px; }
+  .deep-content p:last-child { margin-bottom: 0; }
+  .legend { display: flex; gap: 18px; justify-content: center; margin-top: 20px; flex-wrap: wrap; padding-top: 14px; border-top: 1px solid var(--border-light); }
+  .legend span { font-size: 12px; color: var(--text-secondary); display: flex; align-items: center; gap: 6px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .dot-f { background: #378ADD; } .dot-g { background: #1D9E75; } .dot-a { background: #7F77DD; }
+  .footer { text-align: center; margin-top: 16px; font-size: 11px; color: var(--text-tertiary); }
+  @media (max-width: 600px) { .container { padding: 16px; } .tabs { gap: 4px; } .tab { padding: 6px 10px; font-size: 12px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="page-title"><h1>Wirkungsketten der Konjunkturpolitik</h1></div>
+  <div class="page-subtitle">Fiskalpolitik &ndash; Geldpolitik &ndash; Automatische Stabilisatoren</div>
+  <div class="page-context">Fallbeispiel: Auswirkungen des Iran-Kriegs auf die Schweizer Wirtschaft (M&auml;rz 2026)</div>
+  <div class="tabs" id="tabs"></div>
+  <div class="chain-area" id="chains"></div>
+  <div class="legend">
+    <span><span class="dot dot-f"></span> Fiskalpolitik</span>
+    <span><span class="dot dot-g"></span> Geldpolitik</span>
+    <span><span class="dot dot-a"></span> Autom. Stabilisatoren</span>
+  </div>
+  <div class="footer">VWL &ndash; Gymnasium 4. Jahr &ndash; Konjunkturpolitik</div>
+</div>
+
+<script>
+const data = [
+  {
+    id:"f1", group:"f", title:"Staatsausgaben erh\u00f6hen",
+    steps:[
+      {label:"Massnahme",text:"Staat vergibt zus\u00e4tzliche Auftr\u00e4ge (z.\u00a0B. Infrastruktur vorziehen)"},
+      {label:"Direkter Effekt",text:"Gesamtnachfrage steigt: Komponente G (Staatsausgaben) \u2191"},
+      {label:"Zweitrundeneffekt",text:"L\u00f6hne bei Arbeitnehmenden \u2192 Teil fliesst in Konsum (C) \u2192 zus\u00e4tzliche Nachfrage"},
+      {label:"Wirkung",text:"BIP stabilisiert sich, Besch\u00e4ftigung gesichert, Arbeitslosigkeit ged\u00e4mpft"}
+    ],
+    conflicts:[
+      "Budgetdefizit: Expansive Fiskalpolitik f\u00fchrt zu Staatsverschuldung. Schuldenbremse verlangt sp\u00e4teren Ausgleich.",
+      "Time Lag: Erkenntnis + Umsetzung + Wirkung \u2248 bis 2 Jahre. Massnahme k\u00f6nnte prozyklisch wirken.",
+      "Sickereffekt: Schweiz als offene VW \u2013 \u00fcber 50\u00a0% der Nachfrage kann ins Ausland abfliessen."
+    ],
+    cross:{title:"Wechselwirkung mit Geldpolitik & Stabilisatoren",text:"H\u00f6here Staatsausgaben k\u00f6nnen den Inflationsdruck verst\u00e4rken, den die SNB mit restriktiver Geldpolitik bek\u00e4mpfen m\u00fcsste. Gleichzeitig wirken die automatischen Stabilisatoren bereits d\u00e4mpfend. Zus\u00e4tzliche Fiskalpolitik ist nur n\u00f6tig, wenn die Stabilisatoren nicht ausreichen."},
+    deep:"<p><strong>Konkretes Beispiel:</strong> Der Bundesrat beschliesst im April 2026, die Sanierung der A6 (Bern\u2013Thun) um ein Jahr vorzuziehen. Auftragsvolumen: CHF 180\u00a0Mio. Die Baufirmen erhalten sofort Auftr\u00e4ge, stellen zus\u00e4tzliches Personal ein. Die L\u00f6hne dieser Arbeitnehmenden fliessen teilweise in den Konsum \u2013 das Restaurant neben der Baustelle profitiert genauso wie der Baumarkt in Thun.</p><p><strong>Aber:</strong> Ein Teil der Baumaterialien (Stahl, Bitumen) wird importiert. Gem\u00e4ss Skript: Beim Investitionsbonus der 1990er-Jahre entfiel mehr als die H\u00e4lfte der Nachfrage auf Importg\u00fcter. Der Stimulierungseffekt f\u00fcr die Schweizer Wirtschaft ist also deutlich kleiner als die 180\u00a0Mio. vermuten lassen.</p><p><strong>Zielkonflikt im Detail:</strong> Die Schuldenbremse erlaubt das Defizit in der Abschwungphase. Aber: Die Corona-Schulden von 2020/21 sind noch nicht vollst\u00e4ndig abgebaut. Neue Defizite erh\u00f6hen den Druck, im n\u00e4chsten Boom umso h\u00e4rter zu sparen \u2013 politisch ein schwieriges Versprechen.</p>"
+  },
+  {
+    id:"f2", group:"f", title:"Steuern senken",
+    steps:[
+      {label:"Massnahme",text:"Staat senkt direkte oder indirekte Steuern (z.\u00a0B. Mineral\u00f6lsteuer, Steuerrabatt)"},
+      {label:"Mechanismus",text:"Verf\u00fcgbares Einkommen steigt (= Einkommen minus Steuern)"},
+      {label:"Erhoffter Effekt",text:"Haushalte konsumieren mehr \u2192 Komponente C (Konsum) \u2191"},
+      {label:"Unsicherheit",text:"Wirkt indirekter: Unklar, ob Haushalte das Geld ausgeben oder aus Vorsicht sparen"}
+    ],
+    conflicts:[
+      "Sparparadox: In Krisenzeiten sparen Haushalte trotz h\u00f6herem Einkommen \u2013 Steuersenkung verpufft.",
+      "Asymmetrische Anreize: Steuersenkung ist popul\u00e4r, sp\u00e4tere Erh\u00f6hung im Boom ist es nicht.",
+      "Verfassungsschranke: In der CH sind wichtigste Steuers\u00e4tze in der Verfassung \u2013 \u00c4nderung nur per Volksabstimmung."
+    ],
+    cross:{title:"Wechselwirkung",text:"Steuersenkung + automatisch sinkende Steuern + steigende ALV-Ausgaben = dreifacher Druck auf den Staatshaushalt. Die Schuldenbremse wird zur harten Leitplanke."},
+    deep:"<p><strong>Konkretes Beispiel:</strong> Eine vierköpfige Familie in Thun pendelt t\u00e4glich mit dem Auto und heizt mit \u00d6l. Seit Kriegsbeginn zahlt sie CHF\u00a0200\u2013300 pro Monat mehr f\u00fcr Energie. Das Parlament beschliesst eine tempor\u00e4re Senkung der Mineral\u00f6lsteuer um 15 Rappen/Liter. Die Familie spart ca. CHF\u00a040\u201350 pro Monat an der Zapfs\u00e4ule.</p><p><strong>Aber:</strong> Gibt die Familie das gesparte Geld wirklich aus? In Krisenzeiten mit grosser Unsicherheit sparen viele Haushalte aus Vorsicht \u2013 der M\u00f6belkauf wird trotzdem verschoben. Das Skript beschreibt genau dieses Problem: Konsum h\u00e4ngt nicht nur vom verf\u00fcgbaren Einkommen ab, sondern auch von psychologischen Faktoren.</p><p><strong>Zus\u00e4tzlicher Konflikt:</strong> Die Mineral\u00f6lsteuersenkung macht Autofahren und Heizen billiger. Das schw\u00e4cht den Anreiz zum Energiesparen \u2013 genau in dem Moment, in dem die Versorgungslage angespannt ist. Und sie n\u00fctzt Vielfahrern mehr als \u00d6V-Pendlern.</p><p><strong>Wechselwirkung:</strong> Die Frankenst\u00e4rke d\u00e4mpft aktuell den \u00d6lpreisanstieg in CHF. Wenn die SNB den Franken durch Deviseninterventionen schw\u00e4cht, f\u00e4llt dieser Schutz weg und die Energiepreise steigen zus\u00e4tzlich. Steuersenkung und Devisenintervention arbeiten hier gegeneinander.</p>"
+  },
+  {
+    id:"g1", group:"g", title:"Deviseninterventionen",
+    steps:[
+      {label:"Massnahme",text:"SNB kauft Euro/Dollar gegen Schweizer Franken am Devisenmarkt"},
+      {label:"Mechanismus",text:"CHF-Geldmenge steigt \u2192 Franken wertet ab (Abwertung des CHF)"},
+      {label:"Wirkung Exporte",text:"Schweizer Waren werden f\u00fcr Ausl\u00e4nder g\u00fcnstiger \u2192 Exportnachfrage \u2191"},
+      {label:"Wirkung Importe",text:"Importg\u00fcter werden f\u00fcr Schweizer teurer \u2192 Importnachfrage \u2193 \u2192 Binnennachfrage \u2191"},
+      {label:"Nettoeffekt",text:"Nettoexporte (NX = Exporte \u2013 Importe) steigen \u2192 Gesamtnachfrage steigt"}
+    ],
+    conflicts:[
+      "Preisstabilit\u00e4t: Geldmengenausweitung birgt Inflationsrisiko. Bei erfolgreicher Abwertung f\u00e4llt der d\u00e4mpfende Frankenst\u00e4rke-Effekt weg.",
+      "Bilanzrisiko: SNB h\u00e4uft riesige Devisenbest\u00e4nde an. Wertet CHF sp\u00e4ter auf \u2192 massive Buchverluste.",
+      "Keine Einbahnstrasse: Steigende Nachfrage nach CH-G\u00fctern erh\u00f6ht automatisch die CHF-Nachfrage \u2192 Franken wertet wieder auf."
+    ],
+    cross:{title:"Wechselwirkung",text:"Die Abwertung des CHF macht Importe teurer \u2013 verst\u00e4rkt den \u00d6lpreisschock f\u00fcr Konsumenten. Die automatischen Stabilisatoren federn den Kaufkraftverlust teilweise ab. Fiskalpolitisch k\u00f6nnte eine Mineral\u00f6lsteuersenkung gegensteuern."},
+    deep:"<p><strong>Konkretes Beispiel:</strong> SNB-Chef Schlegel signalisiert im M\u00e4rz 2026 \u00aberh\u00f6hte Bereitschaft\u00bb zu Devisenk\u00e4ufen. Angenommen, die SNB kauft Euro im Wert von CHF\u00a05 Mrd. Wirkungskette gem\u00e4ss Skript: Mehr CHF im Umlauf \u2192 Euro wird knapper relativ zum CHF \u2192 Eurokurs steigt z.\u00a0B. von 0.92 auf 0.95 \u2192 eine Schweizer Uhr, die CHF\u00a05\u2019000 kostet, kostet f\u00fcr einen deutschen K\u00e4ufer jetzt EUR\u00a04\u2019750 statt EUR\u00a04\u2019600 \u2013 Moment, das ist teurer? Nein: Der Franken ist jetzt schw\u00e4cher, also erh\u00e4lt der Deutsche f\u00fcr seine Euro mehr Franken. Die Uhr kostet ihn EUR\u00a04\u2019750 statt vorher EUR\u00a05\u2019435. Die Uhr ist also deutlich g\u00fcnstiger geworden.</p><p><strong>Kehrseite:</strong> Das importierte Roh\u00f6l wird in CHF teurer. Diesel k\u00f6nnte von CHF\u00a01.95 auf CHF\u00a02.05 steigen. Die SNB st\u00fctzt also die Uhrenindustrie auf Kosten der Automobilisten. Genau das ist der Zielkonflikt zwischen Exportf\u00f6rderung und Preisstabilit\u00e4t.</p><p><strong>Bilanzrisiko:</strong> Die SNB-Bilanz umfasst bereits \u00fcber CHF\u00a0840 Mrd. Aktiven, davon \u00fcber 90\u00a0% in Fremdw\u00e4hrungen. Jede Aufwertung des Frankens um 1\u00a0% bedeutet Buchverluste von ca. CHF\u00a07\u20138 Mrd.</p>"
+  },
+  {
+    id:"g2", group:"g", title:"Leitzins (Saron) senken",
+    steps:[
+      {label:"Massnahme",text:"SNB senkt den Leitzins (Saron = Tagesgeldzinssatz zwischen Banken, besichert durch Wertschriften)"},
+      {label:"Mechanismus",text:"Kredite werden g\u00fcnstiger \u2192 Finanzierungskosten sinken"},
+      {label:"Wirkung I",text:"Investitionsnachfrage (I) steigt \u2192 Gesamtnachfrage steigt"},
+      {label:"Wirkung NX",text:"CHF-Anlagen weniger attraktiv \u2192 Kapitalzufluss sinkt \u2192 Aufwertungsdruck l\u00e4sst nach \u2192 NX \u2191"}
+    ],
+    conflicts:[
+      "Nullzins-Grenze: Bei Leitzins 0\u00a0% kaum Spielraum. Unternehmen investieren nur bei Erholungserwartung.",
+      "Negativzinsen belasten Sparer/innen und Pensionskassen \u2013 politisch heikel.",
+      "Immobilienblase: Billige Hypotheken \u2192 spekulative Immobilienk\u00e4ufe."
+    ],
+    cross:{title:"Wechselwirkung",text:"Tiefere Zinsen senken auch die Finanzierungskosten des Staates \u2013 das gibt der Fiskalpolitik mehr Spielraum. Gleichzeitig werden die ALV-Reserven weniger belastet, weil die Konjunkturst\u00fctzung die Arbeitslosigkeit bremst."},
+    deep:"<p><strong>Konkretes Beispiel:</strong> Der Saron liegt aktuell bei 0\u00a0%. Die SNB senkt ihn auf \u22120,25\u00a0%. Eine KMU-Schreinerei in Burgdorf, die f\u00fcr CHF\u00a0500\u2019000 eine neue CNC-Fr\u00e4se finanzieren will, zahlt statt 1,8\u00a0% nun 1,5\u00a0% Kreditzins \u2013 eine Ersparnis von CHF\u00a01\u2019500 pro Jahr. Klingt wenig, aber \u00fcber den ganzen Maschinenpark und alle KMU der Schweiz summiert sich das.</p><p><strong>Aber:</strong> Gem\u00e4ss Skript: \u00abUnternehmen investieren nur, wenn sie \u00fcberzeugt sind, mit ihren Investitionen auch tats\u00e4chlich einen Gewinn erzielen zu k\u00f6nnen.\u00bb Wenn die Schreinerei bef\u00fcrchtet, dass die Auftr\u00e4ge wegen des Kriegs einbrechen, hilft auch der g\u00fcnstigste Kredit nicht. Die Zinssenkung ist wie ein Angebot f\u00fcr billige Regenschirme \u2013 n\u00fctzt nur, wenn die Leute auch rausgehen wollen.</p><p><strong>Hypothekenmarkt:</strong> Die Swap-S\u00e4tze sind seit Kriegsbeginn um 20 Basispunkte gestiegen. Eine Zinssenkung der SNB k\u00f6nnte diesen Anstieg teilweise kompensieren. Aber: Werden Hypotheken zu billig, steigt das Risiko einer Immobilienblase \u2013 genau das warnte der NZZ-Artikel.</p>"
+  },
+  {
+    id:"a1", group:"a", title:"Einkommenssteuer (Progression)",
+    steps:[
+      {label:"Ausl\u00f6ser",text:"Iran-Krieg \u2192 Frankenst\u00e4rke \u2192 Exportfirmen: Umsatzr\u00fcckg\u00e4nge \u2192 Boni gek\u00fcrzt, Kurzarbeit"},
+      {label:"Mechanismus",text:"Einkommen sinken \u2192 Steuereinnahmen sinken automatisch (direkt an Einkommen gekoppelt)"},
+      {label:"Wirkung",text:"Haushalten bleibt mehr Nettoeinkommen \u2192 Konsum (C) sinkt weniger stark"},
+      {label:"Ergebnis",text:"Nachfrager\u00fcckgang wird ged\u00e4mpft \u2013 ohne Parlamentsbeschluss, ohne Time Lag"}
+    ],
+    conflicts:[
+      "Nur d\u00e4mpfend, nicht heilend: Kann schwere Rezession nicht verhindern.",
+      "Wirkt nur nachfrageseitig: Der Angebotsschock (\u00d6lpreise) wird nicht adressiert.",
+      "Bei l\u00e4ngerem Krieg reicht die D\u00e4mpfung nicht \u2013 aktive Politik wird n\u00f6tig."
+    ],
+    cross:{title:"Wechselwirkung",text:"Die automatisch sinkenden Steuereinnahmen erzeugen ein Budgetdefizit, das die Schuldenbremse duldet. Kommt aktive Fiskalpolitik dazu, summieren sich die Defizite."},
+    deep:"<p><strong>Konkretes Beispiel:</strong> Eine Ingenieurin bei einem Thuner Maschinenbauer verdient normalerweise CHF\u00a0110\u2019000 (inkl. Bonus CHF\u00a015\u2019000). Wegen des starken Frankens brechen die Auftr\u00e4ge aus Deutschland ein, der Bonus wird gestrichen. Ihr Einkommen sinkt auf CHF\u00a095\u2019000.</p><p><strong>Wirkung der Progression:</strong> Bei CHF\u00a0110\u2019000 zahlte sie im Kanton Bern ca. CHF\u00a014\u2019500 Kantons- und Gemeindesteuern. Bei CHF\u00a095\u2019000 sinkt die Steuerlast auf ca. CHF\u00a011\u2019800. Der R\u00fcckgang betr\u00e4gt CHF\u00a02\u2019700 \u2013 das sind 18\u00a0% weniger Steuern bei nur 14\u00a0% weniger Einkommen. Dank der progressiven Ausgestaltung f\u00e4llt der Steuersatz \u00fcberproportional. Ihr Nettoeinkommen sinkt daher weniger stark als das Bruttoeinkommen.</p><p><strong>Entscheidend:</strong> Das Ganze passiert automatisch \u2013 kein Politiker muss etwas beschliessen, kein Parlament muss tagen. Es gibt keinen Entscheidungs-Time-Lag. Genau deshalb sind automatische Stabilisatoren gem\u00e4ss Skript das R\u00fcckgrat der Schweizer Konjunkturpolitik.</p>"
+  },
+  {
+    id:"a2", group:"a", title:"Arbeitslosenversicherung (ALV)",
+    steps:[
+      {label:"Ausl\u00f6ser",text:"Iran-Krieg \u2192 Tourismus und Transport leiden \u2192 Hotels/Airlines entlassen Personal"},
+      {label:"Mechanismus (Ausgaben)",text:"ALV-Ausgaben steigen automatisch: Entlassene erhalten Ersatzeinkommen (70\u201380\u00a0% des Lohns)"},
+      {label:"Mechanismus (Einnahmen)",text:"ALV-Beitragseinnahmen sinken (weniger Besch\u00e4ftigte zahlen Beitr\u00e4ge)"},
+      {label:"Wirkung",text:"Konsum der Betroffenen bricht weniger ein \u2192 Gesamtnachfrage wird stabilisiert"}
+    ],
+    conflicts:[
+      "Doppelbelastung: Ausgaben steigen + Einnahmen sinken = ALV-Defizit.",
+      "Deckung begrenzt: Bei Massenentlassungen reichen Reserven nicht unbegrenzt.",
+      "Moral Hazard: Grossz\u00fcgige Leistungen k\u00f6nnen Anreiz zur Arbeitssuche verringern."
+    ],
+    cross:{title:"Wechselwirkung",text:"Schw\u00e4cht die SNB den Franken erfolgreich, profitiert die Exportindustrie \u2192 weniger Entlassungen \u2192 ALV wird weniger belastet. Reagiert die SNB zu z\u00f6gerlich, explodieren die ALV-Kosten \u2013 was den Druck auf die Fiskalpolitik erh\u00f6ht."},
+    deep:"<p><strong>Konkretes Beispiel:</strong> Das Hotel Bellevue in Interlaken lebt von asiatischen Touristen. Durch die gest\u00f6rten Flugrouten und h\u00f6heren Ticketpreise brechen die Buchungen um 40\u00a0% ein. Das Hotel entl\u00e4sst 12 von 30 Mitarbeitenden.</p><p><strong>ALV-Wirkung:</strong> Eine Rezeptionistin, die CHF\u00a04\u2019800 netto verdiente, erh\u00e4lt nun ca. CHF\u00a03\u2019360 (70\u00a0%) von der ALV. Sie kann ihre Miete und Grundbed\u00fcrfnisse weiterhin decken. Ohne ALV w\u00fcrde ihr Konsum auf fast null fallen \u2013 mit ALV sinkt er \u00abur\u00bb um ca. 30\u00a0%. Gem\u00e4ss Skript: \u00abDie Konsumausgaben der Arbeitslosen sinken viel weniger stark als ohne dieses Ersatzeinkommen.\u00bb</p><p><strong>Doppelwirkung:</strong> Gleichzeitig sinken die ALV-Beitragseinnahmen, weil 12 Personen keine L\u00f6hne mehr beziehen und somit keine Beitr\u00e4ge zahlen. Die ALV wird also von zwei Seiten belastet. Bei einem l\u00e4ngeren Krieg mit Massenentlassungen k\u00f6nnten die Reserven nicht ausreichen \u2013 dann br\u00e4uchte es einen Bundeszuschuss, was wiederum die Fiskalpolitik betrifft.</p><p><strong>Wechselwirkung mit Geldpolitik:</strong> Wenn die SNB den Franken erfolgreich schw\u00e4cht, wird die Schweiz f\u00fcr Touristen wieder g\u00fcnstiger \u2192 Buchungen erholen sich schneller \u2192 Hotel Bellevue stellt wieder ein \u2192 ALV-Belastung sinkt. Die Geldpolitik entlastet also indirekt die ALV.</p>"
+  }
+];
+
+const tabsEl = document.getElementById("tabs");
+const chainsEl = document.getElementById("chains");
+
+data.forEach(d => {
+  const btn = document.createElement("button");
+  btn.className = "tab";
+  btn.textContent = d.title;
+  btn.dataset.id = d.id;
+  btn.dataset.group = d.group;
+  btn.onclick = () => show(d.id);
+  tabsEl.appendChild(btn);
+});
+
+function show(id) {
+  const d = data.find(x => x.id === id);
+  document.querySelectorAll(".tab").forEach(t => {
+    t.className = "tab" + (t.dataset.id === id ? " active-" + d.group : "");
+  });
+  const gc = d.group;
+  let html = '<div class="chain visible">';
+  d.steps.forEach((s, i) => {
+    if (i > 0) html += '<div class="step-row"><div class="arrow-col">\u2193</div></div>';
+    html += '<div class="step-row"><div class="step-box ' + gc + '-bg"><div class="label ' + gc + '-label">' + s.label + '</div><div class="text">' + s.text + '</div></div></div>';
+  });
+  html += '<div class="conflict-box"><div class="ch">\u26A0\uFE0E Zielkonflikte</div>';
+  d.conflicts.forEach(c => {
+    html += '<div class="conflict-item"><span class="conflict-icon">\u2022</span><span class="conflict-text">' + c + '</span></div>';
+  });
+  html += '</div>';
+  html += '<div class="cross-box"><div class="ch">\u2194 ' + d.cross.title + '</div><div class="text">' + d.cross.text + '</div></div>';
+  html += '<button class="deep-btn" onclick="toggleDeep(this)">Wirkungskette vertiefen <span class="arrow">\u25B6</span></button>';
+  html += '<div class="deep-content" id="deep-' + d.id + '">' + d.deep + '</div>';
+  html += '</div>';
+  chainsEl.innerHTML = html;
+}
+
+function toggleDeep(btn) {
+  btn.classList.toggle("open");
+  const content = btn.nextElementSibling;
+  content.classList.toggle("visible");
+}
+
+show("f1");
+</script>
+</body>
+</html>
